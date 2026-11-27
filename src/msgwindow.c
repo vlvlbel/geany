@@ -1097,10 +1097,13 @@ void msgwin_parse_compiler_error_line(const gchar *string, const gchar *dir,
 	if (G_UNLIKELY(string == NULL))
 		return;
 
-	if (dir == NULL)
-		utf8_dir = utils_get_utf8_from_locale(build_info.dir);
-	else
+  /// BVV: POSIX fix: The folder which is set as a working dir in build settings
+  /// should have priority over the entered folder for the current building process
+  if (build_info.dir == NULL && dir != NULL) 
 		utf8_dir = g_strdup(dir);
+  else
+    utf8_dir = utils_get_utf8_from_locale(build_info.dir);
+  ///
 	g_return_if_fail(utf8_dir != NULL);
 
 	trimmed_string = g_strdup(string);
