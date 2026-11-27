@@ -92,7 +92,7 @@ static GtkWidget *geany_entry_action_create_tool_item(GtkAction *action)
 		gtk_entry_set_width_chars(GTK_ENTRY(entry), 9);
   /// BVV: Set the SearchEntry to have 70 chars in the toolbar
   } else {
-    gtk_entry_set_width_chars(GTK_ENTRY(priv->entry), 70);
+    gtk_entry_set_width_chars(GTK_ENTRY(entry), 70);
   }
   ///
 
