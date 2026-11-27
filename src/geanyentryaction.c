@@ -88,8 +88,13 @@ static GtkWidget *geany_entry_action_create_tool_item(GtkAction *action)
 	GeanyEntryActionPrivate *priv = GEANY_ENTRY_ACTION_GET_PRIVATE(action);
 
 	entry = gtk_entry_new();
-	if (priv->numeric)
+	if (priv->numeric) {
 		gtk_entry_set_width_chars(GTK_ENTRY(entry), 9);
+  /// BVV: Set the SearchEntry to have 70 chars in the toolbar
+  } else {
+    gtk_entry_set_width_chars(GTK_ENTRY(priv->entry), 70);
+  }
+  ///
 
 	ui_entry_add_clear_icon(GTK_ENTRY(entry));
 	ui_entry_add_activate_backward_signal(GTK_ENTRY(entry));
